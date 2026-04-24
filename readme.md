@@ -15,14 +15,17 @@ The script currently performs a complete data retrieval flow through the termina
 ## 🛠️ Technology Stack
 
 * **Language:** Python 3.13
-* **Libraries:** * `requests`: For handling HTTP communication with Riot's servers.
-    * `python-dotenv`: For managing sensitive API credentials.
+* **Framework:** FastAPI
+* **Containerization:** Docker
+* **Libraries:**
+     * `asyncio` and `aiohttp`: For handling asyncronous HTTP communication with Riot's servers.
+     * `python-dotenv`: For managing API credentials.
 
 ## 📋 Setup & Installation
 
 ### 1. Prerequisites
 - A **Riot API Key** from the [Riot Developer Portal](https://developer.riotgames.com/).
-- Python installed on your machine.
+- Docker desktop.
 
 ### 2. Configuration
 Create a `.env` file in the root directory of the project to store your credentials:
@@ -30,21 +33,28 @@ Create a `.env` file in the root directory of the project to store your credenti
 RIOT_API_KEY=your_api_key_here
 ```
 
-### 3. Instalation
-```pip install requests python-dotenv```
+### 3. Running the project
+Open a terminal in the project file, then run:
+```env
+docker build -t riot-api .
+```
+After building, run:
+```env
+docker compose up
+```
+then you can acess the api at  `http://localhost:8000/docs`
 
-### 4. Running the project
-```python main.py```
 
 🗺️ Roadmap & Upcoming Changes
+
 The project is currently in a "Proof of Concept" phase. Planned improvements include:
 
-[X] Asynchronous Refactoring (Priority): Replacing requests with aiohttp and asyncio to allow concurrent API calls, significantly speeding up the retrieval of multiple match details.
+[X] Asynchronous Refactoring: Replacing requests with aiohttp and asyncio to allow concurrent API calls, significantly speeding up the retrieval of multiple match details.
 
-[ ] Robust Error Handling: Implementing logic to handle Rate Limits (429), expired keys, and "Summoner Not Found" errors.
+[X] Robust Error Handling: Implementing logic to handle Rate Limits (429), expired keys, and "Summoner Not Found" errors.
 
 [ ] Data Persistence: Adding a database layer (such as PostgreSQL or MongoDB) to cache results and minimize API usage.
 
-[ ] Web Framework Integration: Transitioning the logic into a REST API using FastAPI or Flask.
+[X] Web Framework Integration: Transitioning the logic into a REST API using FastAPI or Flask.
 
-Note: This project is a work in progress and currently uses synchronous requests, which may result in slower execution times when fetching large volumes of match data.
+[ ] Frontend for showing data visually.
