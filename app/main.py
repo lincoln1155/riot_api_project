@@ -1,7 +1,7 @@
 import os
 import asyncio
 import aiohttp
-from utils import riot_get
+from app.utils import riot_get
 from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
 from contextlib import asynccontextmanager
@@ -31,7 +31,7 @@ async def request_puuid_by_summoner_id(session, riot_id, region, key):
     
 
     data = await riot_get(session, url)
-    return data['puuid']
+    return data.get('puuid')
     
 async def get_matchid_by_puuid(session, puuid, region, key):
     url = f"https://{region}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=20&api_key={key}"
