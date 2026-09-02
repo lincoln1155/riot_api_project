@@ -4,8 +4,6 @@
 
 **A full-stack web application** that tracks League of Legends match history and provides real-time AI coaching powered by Google Gemini.
 
-🔗 **[Live Demo](https://lolstats-64cbc4-lol-stats.guaracloud.com/)**
-
 </div>
 
 ---
@@ -106,8 +104,8 @@ riot_api_project/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/lincoln1155/riot_api_project.git
-cd riot_api_project
+git clone https://github.com/lincoln1155/lol-stats.git
+cd lol-stats
 ```
 
 2. Create a `.env` file in the root directory:
